@@ -3,9 +3,9 @@ const userBL = require('../BL/userBL')
 
 function Router(app) {
 
-    app.get('/user', (req, res) => {
+    app.get('/user', async (req, res) => {
         try {
-            const user = userBL.getUserById(req.query.id)
+            const user = await userBL.getUserById(req.query.id)
             res.status(200).send(user)
         } catch (error) {
             res.status(404).send()
@@ -13,9 +13,10 @@ function Router(app) {
 
     })
 
-    app.post('/users', (req, res) => {
+    app.post('/users', async (req, res) => {
         try {
-            const users = userBL.getUsers(req.body)
+            const users = await userBL.getUsers(req.body)
+            console.log(users);
             res.status(200).send(users)
         } catch (error) {
             res.send(error.message)
@@ -55,17 +56,5 @@ function Router(app) {
     })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+module.exports = Router

@@ -14,13 +14,14 @@ async function getUsers(filter) {
     const users = await userController.find(filter)
 
     if (users.length == 0) throw 'no users has been found '
-
+    // console.log(users);
     return users
 
 }
 
 async function creatUser(user) {
     try {
+
         const newUser = await userController.create(user)
 
         return newUser

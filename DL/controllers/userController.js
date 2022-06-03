@@ -1,7 +1,9 @@
 const userModel = require('../models/userModule')
 
 async function create(user) {
+
     const newUser = await userModel.create(user)
+    
     return newUser
 }
 
